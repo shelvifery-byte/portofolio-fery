@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11120f">
+    <meta name="description" content="Portofolio Fery Rhamad Dani — tentang saya, kemampuan, pendidikan, dan kontak.">
+    <title>Portofolio — Fery Rhamad Dani</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #11120f;
+            --surface: #191a16;
+            --text: #f2f1e9;
+            --muted: #9b9c91;
+            --line: rgb(255 255 255 / 11%);
+            --accent: #c8ff57;
+            font-family: Inter, "Segoe UI", sans-serif;
+            font-synthesis: none;
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .site-header {
+            position: sticky;
+            z-index: 5;
+            top: 0;
+            border-bottom: 1px solid var(--line);
+            background: rgb(17 18 15 / 88%);
+            backdrop-filter: blur(16px);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 750;
+            letter-spacing: 0.13em;
+        }
+
+        .logo-mark {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 18px rgb(200 255 87 / 60%);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            color: #c4c5bb;
+            font-size: 13px;
+        }
+
+        .nav-links a, .text-link {
+            transition: color 180ms ease;
+        }
+
+        .nav-links a:hover, .text-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-contact {
+            padding: 11px 17px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--text) !important;
+        }
+
+        .nav-contact:hover {
+            border-color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            padding: 8px;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 660px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 56px;
+            padding-block: 88px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 23px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .availability {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgb(200 255 87 / 65%);
+        }
+
+        h1, h2, h3, p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 680px;
+            margin-bottom: 22px;
+            font-size: clamp(48px, 7vw, 82px);
+            font-weight: 600;
+            letter-spacing: -0.075em;
+            line-height: 0.99;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .hero-copy {
+            max-width: 510px;
+            margin-bottom: 30px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 20px;
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            background: var(--accent);
+            color: #17190f;
+            font-size: 13px;
+            font-weight: 700;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: #d7ff83;
+        }
+
+        .text-link {
+            color: #d4d5cc;
+            font-size: 13px;
+        }
+
+        .text-link span, .button span {
+            font-size: 17px;
+        }
+
+        .hero-art {
+            position: relative;
+            min-height: 390px;
+            display: grid;
+            place-items: center;
+        }
+
+        .art-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgb(200 255 87 / 12%);
+            filter: blur(70px);
+        }
+
+        .art-card {
+            position: relative;
+            width: min(100%, 360px);
+            aspect-ratio: 0.92;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px;
+            border: 1px solid rgb(255 255 255 / 16%);
+            border-radius: 22px;
+            background:
+                radial-gradient(ellipse at 68% 32%, rgb(200 255 87 / 35%), transparent 29%),
+                linear-gradient(145deg, #30342a, #1d201a 60%, #171814);
+            box-shadow: 0 30px 100px rgb(0 0 0 / 40%);
+            transform: rotate(3deg);
+        }
+
+        .art-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .art-card::before, .art-card::after {
+            position: absolute;
+            content: "";
+            border: 1px solid rgb(200 255 87 / 28%);
+            border-radius: 50%;
+        }
+
+        .art-card::before {
+            width: 260px;
+            height: 260px;
+            top: 40px;
+            right: -40px;
+        }
+
+        .art-card::after {
+            width: 190px;
+            height: 190px;
+            top: 75px;
+            right: -5px;
+        }
+
+        .art-top, .art-bottom {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            color: #e8ebdd;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+        }
+
+        .section {
+            padding-block: 100px;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 42px;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin-bottom: 0;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 550;
+            letter-spacing: -0.06em;
+        }
+
+        .section-note {
+            max-width: 340px;
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-photo {
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
+        }
+
+        .about-photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 0.82;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .about-photo figcaption {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: grid;
+            gap: 5px;
+            padding: 38px 20px 20px;
+            background: linear-gradient(transparent, rgb(17 18 15 / 92%));
+            font-size: 15px;
+            font-weight: 650;
+        }
+
+        .about-photo figcaption span {
+            color: #d0d1c7;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .about-copy {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .about-copy p:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .skill {
+            min-height: 150px;
+            padding: 20px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--surface);
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .skill span {
+            display: block;
+            margin-bottom: 18px;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+        }
+
+        .education-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: clamp(24px, 5vw, 42px);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--surface);
+        }
+
+        .education-card h3 {
+            margin-bottom: 8px;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 550;
+            letter-spacing: -0.04em;
+        }
+
+        .education-card p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .education-status {
+            flex: 0 0 auto;
+            padding: 10px 15px;
+            border: 1px solid rgb(200 255 87 / 30%);
+            border-radius: 999px;
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+            padding: clamp(28px, 6vw, 60px);
+            border: 1px solid rgb(200 255 87 / 24%);
+            border-radius: 20px;
+            background:
+                radial-gradient(ellipse at 90% 10%, rgb(200 255 87 / 10%), transparent 35%),
+                #191b15;
+        }
+
+        .contact-card h2 {
+            max-width: 600px;
+            margin-bottom: 14px;
+        }
+
+        .contact-card p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contact-links .button {
+            white-space: nowrap;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding-block: 27px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .socials a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(100% - 36px, 560px);
+            }
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 68px;
+                right: 0;
+                left: 0;
+                display: none;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 18px 18px;
+                border-bottom: 1px solid var(--line);
+                background: #11120f;
+            }
+
+            .nav-links.is-open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-links a {
+                padding: 14px 4px;
+            }
+
+            .nav-contact {
+                padding-inline: 4px;
+                border: 0;
+            }
+
+            .hero {
+                min-height: auto;
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding-block: 78px 50px;
+            }
+
+            .hero-art {
+                min-height: 330px;
+            }
+
+            .art-card {
+                width: min(75%, 300px);
+            }
+
+            .section {
+                padding-block: 72px;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+                margin-bottom: 28px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-photo {
+                width: min(100%, 360px);
+            }
+
+            .skills {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .education-card {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .contact-card {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Navigasi utama">
+            <a class="logo" href="#home" aria-label="FERY RHAMAD DANI, home">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span>FERY RHAMAD DANI</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Me</a>
+                <a href="#skills">Keahlian</a>
+                <a href="#education">Education</a>
+                <a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container" id="home">
+            <div>
+                
+                <h1>Halo, saya<br><span>FERY RHAMAD DANI</span></h1>
+                <p class="hero-copy">Saya mahasiswa Universitas Pamulang yang sedang belajar teknologi informasi dan mengembangkan kemampuan membuat solusi digital yang bermanfaat.</p>
+                <div class="actions">
+                    <a class="text-link" href="#about">Kenali saya <span aria-hidden="true">→</span></a>
+                </div>
+            </div>
+            <div class="hero-art" aria-label="Tempat foto profil">
+                <div class="art-glow"></div>
+                <div class="art-card">
+                    <img class="art-photo" src="foto%20pp.jpeg" alt="Foto Fery Rhamad Dani">
+                    <div class="art-top"><span>PORTOFOLIO</span><span>2025 — 2026</span></div>
+                    <div class="art-bottom"><span></span><span>2026</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container about-grid">
+                <figure class="about-photo">
+                    <img src="foto%20pp.jpeg" alt="Foto Fery Rhamad Dani">
+                    <figcaption>Fery Rhamad Dani <span>Mahasiswa · Universitas Pamulang</span></figcaption>
+                </figure>
+                <div class="about-content">
+                    <p class="eyebrow">About me</p>
+                    <h2>Saya senang belajar dan memecahkan masalah lewat teknologi.</h2>
+                    <div class="about-copy">
+                        <p>Saya Fery Rhamad Dani, mahasiswa Universitas Pamulang yang tertarik dengan bidang teknologi informasi. Saya senang mempelajari bagaimana teknologi bisa membantu menyelesaikan kebutuhan sehari-hari.</p>
+                        <p>Saat ini saya terus mengembangkan kemampuan lewat perkuliahan dan proyek, termasuk membuat aplikasi peminjaman barang berbasis Laravel. Saya ingin terus bertumbuh dan menghasilkan solusi digital yang bermanfaat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Keahlian dan Kompetensi</p>
+                        <h2>Keahlian yang saya miliki dan kembangkan.</h2>
+                    </div>
+                    <p class="section-note">Saya terus mengasah kemampuan ini melalui perkuliahan dan proyek.</p>
+                </div>
+                <div class="skills" aria-label="Keahlian dan kompetensi">
+                    <div class="skill"><span>01 / NETWORK</span>Network Installation</div>
+                    <div class="skill"><span>02 / HARDWARE</span>Hardware Troubleshooting</div>
+                    <div class="skill"><span>03 / WEB</span>Basic HTML &amp; CSS</div>
+                    <div class="skill"><span>04 / CISCO</span>Basic Cisco</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Education</p>
+                        <h2>Pendidikan.</h2>
+                    </div>
+                </div>
+                <article class="education-card">
+                    <div>
+                        <h3>Universitas Pamulang (UNPAM)</h3>
+                        <p>Mahasiswa · Bidang Teknologi Informasi</p>
+                    </div>
+                    <span class="education-status">Sedang menempuh pendidikan</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-card">
+                    <div>
+                        <p class="eyebrow">Contact</p>
+                        <h2>Yuk, terhubung dengan saya.</h2>
+                        <p>Hubungi saya lewat email atau temukan saya di platform berikut.</p>
+                    </div>
+                    <div class="contact-links">
+                        <a class="button" href="mailto:feryxd@gmail.com">Email <span aria-hidden="true">↗</span></a>
+                        <a class="button" href="https://github.com/fery" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                        <a class="button" href="https://www.instagram.com/rhamddani/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer container">
+        <span>© <span id="year">2026</span> Fery Rhamad Dani. Dibuat dengan sepenuh hati.</span>
+        <div class="socials">
+            <a href="https://github.com/fery" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.instagram.com/rhamddani/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Buka menu" : "Tutup menu");
+            navLinks.classList.toggle("is-open", !isOpen);
+        });
+
+        navLinks.addEventListener("click", (event) => {
+            if (event.target.closest("a")) {
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Buka menu");
+                navLinks.classList.remove("is-open");
+            }
+        });
+
+        document.querySelector("#year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
